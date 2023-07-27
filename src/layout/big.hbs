@@ -4,7 +4,6 @@
 }}
 
 <html>
-
   <head>
     <title>
      {{page.title}}
@@ -12,38 +11,24 @@
     <meta charset='utf-8' />
     <link href='css/index.css' rel='stylesheet' />
   </head>
-
   <body>
 	{{#with header}}
 		<header>
 		<div>
 			<h1>{{name.firstname}} {{name.lastname}}</h1>
-		</div>
-		<div>
-			<b>{{position}}</b>
-
-		</div>
-		<br />
-		<div>
-			<em>{{salary}}</em>
-		</div>
-		<br>
-		<div>
-			<address>
-			<em>{{address}}</em>
-			</address>
-		</div>
-		<br />
+		</div>		
 		<hr />
 		</header>
 	{{/with}}
     <nav>
       {{> nav}}
-      
-    </nav>
+    </nav>   
     {{!  ↓  ця кострукція показує куди шаблонізатору треба вставляти код з container файлу   }}
-    {{{body}}}
-	{{>footer social=footer.social firstname=header.name.firstname lastname=header.name.lastname address=header.address}}
-
+    {{{body}}}			
+	{{>footer 
+	social=footer.social 
+	firstname=header.name.firstname 
+	lastname=header.name.lastname 
+	address=header.address}}	
   </body>
 </html>

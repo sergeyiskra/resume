@@ -1,0 +1,80 @@
+{{! 
+Це код container файлу для summary сторінки, 
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/summary"
+}}
+
+<div>
+  	{{#with main}}
+		<main>
+			<section>
+				{{> title data='Work history' big=true}}			
+			<div>
+				<ul>
+					{{#each works}}
+						<li>
+							<div>{{position}}</div>
+							<br>
+							<div>{{duration.from}} -
+								{{#if duration.to}}
+									 {{duration.to}}
+								 {{else}}
+								 	(досі працюемо)
+								 {{/if}}
+							</div>
+							<br>
+							<div>{{> link text=company.name href=company.url blank=true noline=true}} </div>
+							<br>
+							<div>
+								<strong>Projects ({{projectAmount}})</strong>
+							</div>
+							<br>
+							<ul>
+								{{#each projects}}
+								<li>
+									<div><em>{{> link text=name href=url blank=true noline=true}}</em></div>
+									<ul>
+										<li>
+											<div>{{about}}</div>
+										</li>
+									</ul>
+									<br>
+									<div>				
+								<li><em>Project stacks</em></li>
+									<div>				
+									<ul>
+										{{#each stack}}
+										<li>											
+											{{name}}
+											{{/each}}
+										</li>
+									</ul>
+									</div>
+									<br>									
+									<div>
+								<li><em>Project awards</em></li>
+								<div>
+									<ul>										
+											{{#each awards}}
+											<li>
+											{{name}}
+											{{/each}}
+											</li>
+									</ul>
+								</div>
+								</div>
+								</li>
+								{{/each}}							
+							</ul>
+						</li>
+					{{/each}}
+				</ul>
+			</div>
+			</section>			
+		</main>
+	{{/with}}
+</div>
+
+{{!-- 
+    Цей код містить лише те, що буде виводитись в {{{body}}} в layout/default.hbs
+    Адже наш layout/default.hbs має вже структуру HTML
+--}}
